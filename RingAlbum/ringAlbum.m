@@ -2,9 +2,11 @@ function ringAlbum(path)
 
 % Draw Ring album
 % Input:
-% path       Ïà²áÎÄ¼ş¼ĞÂ·¾¶ example : path = '.\ringAlbum\'
+% path       ç›¸å†Œæ–‡ä»¶å¤¹è·¯å¾„ example : path = '.\ringAlbum\'
 
 % Output:
+
+% run : ringAlbum('.\album\')
 
 
     BlockNum = [7,11];
@@ -16,7 +18,7 @@ function ringAlbum(path)
     files = dir(fullfile(path, '*.jpg')); 
     picNum = size(files, 1);
 
-    %±éÀúÂ·¾¶ÏÂÃ¿Ò»·ùÍ¼Ïñ
+    %éå†è·¯å¾„ä¸‹æ¯ä¸€å¹…å›¾åƒ
     for i=1:picNum
        fileName = strcat(path,files(i).name); 
        img = imread(fileName);
