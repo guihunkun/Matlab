@@ -2,15 +2,16 @@ function album3d(path)
 
 % Draw 3d photo album ;
 % Input:
-% path       Ïà²áÎÄ¼ş¼ĞÂ·¾¶ example : path = '.\album\'
+% path       ç›¸å†Œæ–‡ä»¶å¤¹è·¯å¾„ example : path = '.\album\'
 
 % Output:
 
+% run : album3d('.\album\')
 
     files = dir(fullfile(path, '*.jpg')); 
     picNum = size(files,1);
 
-    %±éÀúÂ·¾¶ÏÂÃ¿Ò»·ùÍ¼Ïñ
+    %éå†è·¯å¾„ä¸‹æ¯ä¸€å¹…å›¾åƒ
     for i = 1 : picNum
        fileName = strcat(path, files(i).name);
        img = imread(fileName);
@@ -18,7 +19,7 @@ function album3d(path)
        imgSet{i} = img;
     end
 
-    % fig axesÉèÖÃ
+    % fig axesè®¾ç½®
     fig=figure('units','pixels','position',[50 50 600 600],...
                            'Numbertitle','off','resize','off',...
                            'name','album3d','menubar','none');
@@ -35,11 +36,11 @@ function album3d(path)
     hold(ax,'on')
     ax.CameraPosition=[5 5 5];
 
-    % ÓÃÓÚ»æÖÆÍ¼Æ¬µÄÍø¸ñ
+    % ç”¨äºç»˜åˆ¶å›¾ç‰‡çš„ç½‘æ ¼
     [XMesh,YMesh]=meshgrid(linspace(-1,1,120),linspace(-1,1,120));
     ZMesh=ones(120,120);
 
-    % »æÖÆÍ¼Æ¬Á¢·½Ìå
+    % ç»˜åˆ¶å›¾ç‰‡ç«‹æ–¹ä½“
     surfPic(1)=surf(XMesh,YMesh,ZMesh,'CData',imgSet{mod(0,picNum)+1},'EdgeColor','none','FaceColor','interp');
     surfPic(2)=surf(XMesh,YMesh(end:-1:1,:),-ZMesh,'CData',imgSet{mod(1,picNum)+1},'EdgeColor','none','FaceColor','interp');
     surfPic(3)=surf(ZMesh,XMesh,YMesh(end:-1:1,:),'CData',imgSet{mod(2,picNum)+1},'EdgeColor','none','FaceColor','interp');
@@ -47,17 +48,17 @@ function album3d(path)
     surfPic(5)=surf(-ZMesh,XMesh,YMesh(end:-1:1,:),'CData',imgSet{mod(4,picNum)+1},'EdgeColor','none','FaceColor','interp');
     surfPic(6)=surf(XMesh,-ZMesh,YMesh(end:-1:1,:),'CData',imgSet{mod(5,picNum)+1},'EdgeColor','none','FaceColor','interp');
 
-    % ÒÀ¿¿Ğ¡Á¢·½ÌåÊı¾İ»æÖÆÖĞµÈÁ¢·½Ìå
+    % ä¾é å°ç«‹æ–¹ä½“æ•°æ®ç»˜åˆ¶ä¸­ç­‰ç«‹æ–¹ä½“
     for i=1:6
         surfPicA(i)=surf(surfPic(i).XData.*1.5,surfPic(i).YData.*1.5,surfPic(i).ZData.*1.5,...
             'CData',surfPic(i).CData,'EdgeColor','none','FaceColor','interp','FaceAlpha',0.7);  
     end
 
-    % ÓÃÀ´µ÷Õû·Å´ó±ÈÀıµÄ¾ØÕó
+    % ç”¨æ¥è°ƒæ•´æ”¾å¤§æ¯”ä¾‹çš„çŸ©é˜µ
     resizeMat=[2 2 2.5;2 2 2.5;2.5 2 2;
                2 2.5 2;2.5 2 2;2 2.5 2];
 
-% ×î´óÍ¼Æ¬»æÖÆ       
+% æœ€å¤§å›¾ç‰‡ç»˜åˆ¶       
 % for i=1:6
 %     surfPicB(i)=surf(surfPic(i).XData.*resizeMat(i,1),...
 %                      surfPic(i).YData.*resizeMat(i,2),...
