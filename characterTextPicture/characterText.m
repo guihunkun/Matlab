@@ -2,19 +2,21 @@ function characterText(inPicture, character, outPicture)
 
 % Draw character text
 % Input:
-% inPicture      图片文件 example : inPicture = 'inPicture.jpg'
-% character      文字内容 example : character = 'hello guihun'
+% inPicture      鍥剧墖鏂囦欢 example : inPicture = 'inPicture.jpg'
+% character      鏂囧瓧鍐呭 example : character = 'hello guihun'
 
 % Output:
-% outPicture     图片文件 example : outPicture = 'outpicture.jpg'
+% outPicture     鍥剧墖鏂囦欢 example : outPicture = 'outpicture.jpg'
+
+% run : characterText('inPicture.jpg', 'hello Matlab', 'outpicture.jpg')
 
 
     string = character;
-    lineNum=40;%文本行数
-    fontSize=13;%字号
-    dislocation=1;%文本偏移
-    fontName='Helvetica';%字体
-    fontWeight='normal';%bold/normal是否粗体
+    lineNum=40;%鏂囨湰琛屾暟
+    fontSize=13;%瀛楀彿
+    dislocation=1;%鏂囨湰鍋忕Щ
+    fontName='Helvetica';%瀛椾綋
+    fontWeight='normal';%bold/normal鏄惁绮椾綋
 
 
     bkgPic=imread(inPicture);
